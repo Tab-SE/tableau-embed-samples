@@ -1,14 +1,27 @@
-import { Helmet } from "react-helmet" // adds <script> tag to the document head
-import Viz from "./Viz/Viz.js"
-
+import { useState } from "react";
+import { Helmet } from "react-helmet"; // adds <script> tag to the document head
+import Viz from "./Viz/Viz.js";
 
 function Tableau(props) {
+  const [vizObj, setVizObj] = useState(undefined);
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <>
       <Helmet> 
         <script type="module" src="https://embedding.tableauusercontent.com/tableau.embedding.3.0.0.min.js" async></script>
       </Helmet>
-      <Viz/>
+      <Viz
+        VizObj={vizObj}
+        setVizObj={setVizObj}
+        loaded={loaded}
+        setLoaded={setLoaded}
+        vizUrl={props.vizUrl}
+        height={props.height}
+        width={props.width}
+        hideTabs={props.hideTabs}
+        device={props.device}
+      />
     </>
   );
 }
