@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <div className="App-body">
+      <main className="Main">
         <header>
           <h1>Tableau Connected App: React</h1>
         </header>
@@ -25,7 +25,7 @@ function App() {
             Learn to embed a Tableau Viz
           </a>
         </section>
-      </div>
+      </main>
     </div>
   );
 }

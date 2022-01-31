@@ -4,32 +4,47 @@ import logo from '../../../assets/images/logo.svg';
 
 function Viz(props) {
   const [interactive, setInteractive] = useState(false);
-  const [vizDiv, setVizDiv] = useState(undefined);
+  const [loaded, setLoaded] = useState(false);
 
   const vizRef = useRef(null);
 
+  useEffect(() => { // runs once at first render
+    setLoaded(true);
+  },[]);
+
   useEffect(() => {
-    if (props.loaded) {
-      onFirstInteractive();
+    if (loaded) {
+      const embed = new Promise((resolve, reject) => {
+        props.setVizObj(vizRef.current);
+          // viz = vizRef.current;
+          // onFirstInteractive(viz);
+        resolve(props.vizObj);
+        reject(`Error loading interactive visualization`);
+      }).then(
+        (vizObj) => {
+          console.log('vizObj:', vizObj)
+          onFirstInteractive(vizObj);
+        },
+        (err) => {
+          new Error(err);
+        }
+      );
     }
-  },[props.loaded])
+  },[loaded]);
 
-  const loadedHandler = () => {
-    props.setLoaded(true);
-    console.log('vizRef.current:', vizRef.current)
-    setVizDiv(vizRef.current);
-  }
-
-  const onFirstInteractive = () => {
-    vizDiv.addEventListener('firstinteractive', async (event) => {
+  const onFirstInteractive = (vizObj) => {
+    vizObj.addEventListener('firstinteractive', async (event) => {
       setInteractive(!interactive);
+      console.count('interactive')
     });
   }
- 
+
   return (
     <article>
       <img src={logo} className={`App-logo ${!interactive ? 'active' : 'inactive'}`} alt="logo" />
-      <div className={`${interactive ? 'active' : 'inactive'}`}>
+      <div 
+        className={`${interactive ? 'active' : 'inactive'}`}
+      >
         <tableau-viz 
           ref={vizRef}
           id="tableauViz"       
@@ -38,7 +53,6 @@ function Viz(props) {
           width={props.width}
           hideTabs={props.hideTabs}
           device={props.device}
-          onLoad={loadedHandler}
         />
       </div>
     </article>
