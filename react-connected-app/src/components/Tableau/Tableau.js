@@ -18,6 +18,7 @@ function Tableau(props) {
         width={props.width}
         hideTabs={props.hideTabs}
         device={props.device}
+        toolbar={props.toolbar}
       />
     </>
   );

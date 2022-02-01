@@ -1,3 +1,4 @@
+/* Accessibly hiding elements as described here: https://css-tricks.com/comparing-various-ways-to-hide-things-in-css/ */
 .inactive {
   clip: rect(0 0 0 0); /* cuts the element so it disappears */
   clip-path: inset(50%); /* replaces clip on modern browsers */
@@ -8,5 +9,10 @@
   white-space: nowrap; /* avoids removing empty spaces on screen readers */
 }
 
-.active {
+.Viz {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color:#282c34; */
+  background-color: #4E4F50;
 }

@@ -12,6 +12,9 @@ function App() {
         <section>
           <Tableau
             vizUrl="https://public.tableau.com/views/QuarterlyCashflow/QUARTERLYCASHFLOW?:display_count=n&:showVizHome=no&embed=yes"
+            height={750}
+            width={1400}
+            toolbar="bottom"
           />
           <p>
             Edit <code>src/App.js</code> to embed your viz and save to reload.

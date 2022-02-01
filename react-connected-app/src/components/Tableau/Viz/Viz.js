@@ -20,21 +20,33 @@ function Viz(props) {
 
   useEffect(() => {
     if (props.vizObj) {
-      onFirstInteractive(props.vizObj); // pass props.vizObj as a parameter (set as <tableau-viz>)
+      props.vizObj.addEventListener('firstinteractive', async (event) => { // add the custom event listener to <tableau-viz>
+        setInteractive(true);
+      });
+
+      return () => props.vizObj.removeEventListener('firstinteractive', async (event) => { // return function removes listener to avoid memory leaks
+        setInteractive(true);
+      });
     }
   }, [props.vizObj]); // runs when props.vizObj state is set
 
-  const onFirstInteractive = (vizObj) => {
-    vizObj.addEventListener('firstinteractive', async (event) => { // add the custom event listener to <tableau-viz>
-      setInteractive(true);
-    });
+  const parentStyle = { // sets height and width for viz parent elements
+    height: props.toolbar && props.toolbar !== 'hidden' ? props.height + 27 : props.height, // additional toolbar height if shown
+    width: props.width,
   }
 
   return (
-    <article>
-      <img src={logo} className={`App-logo ${!interactive ? 'active' : 'inactive'}`} alt="logo" />
+    <article className='Viz' style={parentStyle}>
+      <img 
+        src={logo} 
+        className={`App-logo ${!interactive ? 'active' : 'inactive'}`} 
+        alt="logo" 
+        height={`${parentStyle.height}`} 
+        width={`${props.width}`}
+      />
       <div 
-        className={`${interactive ? 'active' : 'inactive'}`}
+        className={`VizDiv ${interactive ? 'active' : 'inactive'}`}
+        style={parentStyle}
       >
         <tableau-viz 
           ref={vizRef}
@@ -42,8 +54,8 @@ function Viz(props) {
           src={props.vizUrl}
           height={props.height}
           width={props.width}
-          hideTabs={props.hideTabs}
           device={props.device}
+          hide-tabs={props.hideTabs ? true : false}
         />
       </div>
     </article>
