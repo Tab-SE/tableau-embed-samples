@@ -5,13 +5,16 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <div className="App-body">
+      <main className="Main">
         <header>
           <h1>Tableau Connected App: React</h1>
         </header>
         <section>
           <Tableau
             vizUrl="https://public.tableau.com/views/QuarterlyCashflow/QUARTERLYCASHFLOW?:display_count=n&:showVizHome=no&embed=yes"
+            height={750}
+            width={1400}
+            toolbar="bottom"
           />
           <p>
             Edit <code>src/App.js</code> to embed your viz and save to reload.
@@ -25,7 +28,7 @@ function App() {
             Learn to embed a Tableau Viz
           </a>
         </section>
-      </div>
+      </main>
     </div>
   );
 }
