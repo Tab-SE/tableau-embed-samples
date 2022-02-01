@@ -11,7 +11,7 @@ function Tableau(props) {
         <script type="module" src="https://embedding.tableauusercontent.com/tableau.embedding.3.0.0.min.js" async></script>
       </Helmet>
       <Viz
-        VizObj={vizObj}
+        vizObj={vizObj}
         setVizObj={setVizObj}
         vizUrl={props.vizUrl}
         height={props.height}

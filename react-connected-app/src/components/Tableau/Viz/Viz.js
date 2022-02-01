@@ -3,39 +3,30 @@ import './Viz.css'
 import logo from '../../../assets/images/logo.svg';
 
 function Viz(props) {
-  const [interactive, setInteractive] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);  // load or render state
+  const [interactive, setInteractive] = useState(false); // viz interactivity state
+  
+  const vizRef = useRef(null); // useRef accesses DOM nodes created with the render method https://reactjs.org/docs/refs-and-the-dom.html
 
-  const vizRef = useRef(null);
-
-  useEffect(() => { // runs once at first render
+  useEffect(() => { 
     setLoaded(true);
-  },[]);
+  },[]); // runs once at first render
 
   useEffect(() => {
     if (loaded) {
-      const embed = new Promise((resolve, reject) => {
-        props.setVizObj(vizRef.current);
-          // viz = vizRef.current;
-          // onFirstInteractive(viz);
-        resolve(props.vizObj);
-        reject(`Error loading interactive visualization`);
-      }).then(
-        (vizObj) => {
-          console.log('vizObj:', vizObj)
-          onFirstInteractive(vizObj);
-        },
-        (err) => {
-          new Error(err);
-        }
-      );
+      props.setVizObj(vizRef.current); // set props.vizObj to the <tableau-viz> element
     }
-  },[loaded]);
+  },[loaded]); // runs when loaded state is set
+
+  useEffect(() => {
+    if (props.vizObj) {
+      onFirstInteractive(props.vizObj); // pass props.vizObj as a parameter (set as <tableau-viz>)
+    }
+  }, [props.vizObj]); // runs when props.vizObj state is set
 
   const onFirstInteractive = (vizObj) => {
-    vizObj.addEventListener('firstinteractive', async (event) => {
-      setInteractive(!interactive);
-      console.count('interactive')
+    vizObj.addEventListener('firstinteractive', async (event) => { // add the custom event listener to <tableau-viz>
+      setInteractive(true);
     });
   }
 
