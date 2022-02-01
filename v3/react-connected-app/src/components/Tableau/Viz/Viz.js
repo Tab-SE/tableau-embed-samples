@@ -2,21 +2,21 @@ import { useState, useEffect, useRef } from 'react';
 import './Viz.css'
 import logo from '../../../assets/images/logo.svg';
 
+// loads tableau visualizations and initiates the Embedding v3 API https://help.tableau.com/current/api/embedding_api/en-us/index.html
 function Viz(props) {
-  const [loaded, setLoaded] = useState(false);  // load or render state
   const [interactive, setInteractive] = useState(false); // viz interactivity state
   
   const vizRef = useRef(null); // useRef accesses DOM nodes created with the render method https://reactjs.org/docs/refs-and-the-dom.html
 
   useEffect(() => { 
-    setLoaded(true);
+    props.setLoaded(true);
   },[]); // runs once at first render
 
   useEffect(() => {
-    if (loaded) {
+    if (props.loaded) {
       props.setVizObj(vizRef.current); // set props.vizObj to the <tableau-viz> element
     }
-  },[loaded]); // runs when loaded state is set
+  },[props.loaded]); // runs when loaded state is set
 
   useEffect(() => {
     if (props.vizObj) {
@@ -24,16 +24,16 @@ function Viz(props) {
         setInteractive(true);
       });
 
-      return () => props.vizObj.removeEventListener('firstinteractive', async (event) => { // return function removes listener to avoid memory leaks
+      return () => props.vizObj.removeEventListener('firstinteractive', async (event) => { // return function removes listener on unmount to avoid memory leaks
         setInteractive(true);
       });
     }
   }, [props.vizObj]); // runs when props.vizObj state is set
 
   const parentStyle = { // sets height and width for viz parent elements
-    height: props.toolbar && props.toolbar !== 'hidden' ? props.height + 27 : props.height, // additional toolbar height if shown
+    height: props.toolbar && props.toolbar !== 'hidden' ? props.height + 27 : props.height, // additional height for toolbar (if displayed)
     width: props.width,
-  }
+  };
 
   return (
     <article className='Viz' style={parentStyle}>
