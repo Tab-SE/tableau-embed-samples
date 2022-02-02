@@ -4,7 +4,6 @@ import logo from '../../../assets/images/logo.svg';
 
 // loads tableau visualizations and initiates the Embedding v3 API https://help.tableau.com/current/api/embedding_api/en-us/index.html
 function Viz(props) {
-  const [interactive, setInteractive] = useState(false); // viz interactivity state
   
   const vizRef = useRef(null); // useRef accesses DOM nodes created with the render method https://reactjs.org/docs/refs-and-the-dom.html
 
@@ -21,32 +20,32 @@ function Viz(props) {
   useEffect(() => {
     if (props.vizObj) {
       props.vizObj.addEventListener('firstinteractive', async (event) => { // add the custom event listener to <tableau-viz>
-        setInteractive(true);
+        props.setInteractive(true);
       });
 
       return () => props.vizObj.removeEventListener('firstinteractive', async (event) => { // return function removes listener on unmount to avoid memory leaks
-        setInteractive(true);
+        props.setInteractive(true);
       });
     }
   }, [props.vizObj]); // runs when props.vizObj state is set
 
-  const parentStyle = { // sets height and width for viz parent elements
+  const vizParent = { // sets height and width for viz parent elements
     height: props.toolbar && props.toolbar !== 'hidden' ? props.height + 27 : props.height, // additional height for toolbar (if displayed)
     width: props.width,
   };
 
   return (
-    <article className='Viz' style={parentStyle}>
+    <article className='Viz' style={vizParent}>
       <img 
         src={logo} 
-        className={`App-logo ${!interactive ? 'active' : 'inactive'}`} 
+        className={`App-logo ${!props.interactive ? 'active' : 'inactive'}`} 
         alt="logo" 
-        height={`${parentStyle.height}`} 
-        width={`${props.width}`}
+        height={`${vizParent.height}`} 
+        width={`${vizParent.width}`}
       />
       <div 
-        className={`VizDiv ${interactive ? 'active' : 'inactive'}`}
-        style={parentStyle}
+        className={`VizDiv ${props.interactive ? 'active' : 'inactive'}`}
+        style={vizParent}
       >
         <tableau-viz 
           ref={vizRef}

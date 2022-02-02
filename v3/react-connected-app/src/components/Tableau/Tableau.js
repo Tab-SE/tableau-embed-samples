@@ -7,6 +7,7 @@ function Tableau(props) {
   // lifting state to share it with non <Viz/> components (e.g. custom toolbar)
   const [vizObj, setVizObj] = useState(undefined); // "viz object" providing access to Tableau API methods
   const [loaded, setLoaded] = useState(false);  // load or render state
+  const [interactive, setInteractive] = useState(false); // viz interactivity state
 
   return (
     <>
@@ -18,6 +19,8 @@ function Tableau(props) {
         setVizObj={setVizObj}
         loaded={loaded}
         setLoaded={setLoaded}
+        interactive={interactive}
+        setInteractive={setInteractive}
         vizUrl={props.vizUrl}
         height={props.height}
         width={props.width}
