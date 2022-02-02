@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To start, first install dependencies for this project:
 
+### `cd v3/react-connected-app`
 ### `npm install`
 
 ##### ***Note**: this requires having [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed on your machine.*
