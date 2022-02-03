@@ -9,15 +9,8 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #EDF1F2;
   margin: 1em 1em 2em 1em;
-}
-
-.vizArticle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #4E4F50;
 }
 
 .App-link {

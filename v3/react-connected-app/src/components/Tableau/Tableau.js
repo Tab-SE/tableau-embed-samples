@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet"; // adds <script> tag to the document head
 import Viz from "./Viz/Viz.js";
 import Animation from "./Animation/Animation.js"
+import "./Tableau.css"
 
 // higher-order component composing multiple components into a single <Tableau/> component
 function Tableau(props) {
