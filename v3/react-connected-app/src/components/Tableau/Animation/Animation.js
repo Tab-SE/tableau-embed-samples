@@ -14,15 +14,19 @@ function Animation(props) {
   });
 
   return (
-    <animated.div style={animateProps}>
-      <img 
-        src={logo} 
-        className={`App-logo ${!props.interactive ? 'active' : 'inactive'}`} 
-        alt="logo" 
-        height={`${props.articleStyle.height}`} 
-        width={`${props.articleStyle.width}`}
-      />
-    </animated.div>
+    <>
+      <animated.div style={animateProps}>
+        <img 
+          src={logo} 
+          className={`App-logo ${!props.interactive ? 'active' : 'inactive'}`} 
+          alt="logo" 
+          height={`${props.articleStyle.height}`} 
+          width={`${props.articleStyle.width}`}
+        />
+      </animated.div>
+      <code className='loadingText'>Loading...</code>
+    </>
+    
   )
 }
 

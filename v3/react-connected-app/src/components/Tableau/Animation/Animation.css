@@ -2,3 +2,10 @@
   height: 60vmin;
   pointer-events: none;
 }
+
+.loadingText {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
