@@ -1,10 +1,11 @@
-import { useSpring, animated } from 'react-spring'
-import './Animation.css'
+import { useState, useEffect } from 'react';
+import { useSpring, animated } from 'react-spring';
+import Loading from './Loading/Loading.js'
+import './Animation.css';
 import logo from '../../../assets/images/logo.svg';
 
 // isolates state and behavior of viz load animations
 function Animation(props) {
-
   // react-spring animation prop
   const animateProps = useSpring({
     from: { opacity: 0.01, rotate: -360, scale: 0.33 }, 
@@ -24,9 +25,8 @@ function Animation(props) {
           width={`${props.articleStyle.width}`}
         />
       </animated.div>
-      <code className='loadingText'>Loading...</code>
+      <Loading/>
     </>
-    
   )
 }
 
