@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <main className="Main">
         <header>
-          <h1>Tableau Connected App: React</h1>
+          <h1>Tableau Connected App: <strong>React</strong></h1>
         </header>
         <section>
           <Tableau
