@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Loading from './Loading/Loading.js'
 import './Animation.css';
