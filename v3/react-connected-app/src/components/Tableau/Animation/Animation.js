@@ -12,7 +12,7 @@ function Animation(props) {
     if (props.interactive) {
       setTimeout(() => {
         setDisplay(false); // delay allows showing exit transition before unmounting
-      }, 1000);
+      }, 700); // faster than transition to viz - shows "Done." loading text
     }
   }, [props.interactive])
 

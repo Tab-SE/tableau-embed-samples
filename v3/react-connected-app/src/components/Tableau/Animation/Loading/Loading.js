@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 function Loading(props) {
   const [loadCount, setLoadCount] = useState(0);
-  const [loadText, setLoadText] = useState('Loading');
+  const [loadText, setLoadText] = useState('Loading   ');
 
   useEffect(() => {
     const loadInterval = setInterval(() => {
