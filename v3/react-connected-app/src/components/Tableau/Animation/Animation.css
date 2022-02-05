@@ -3,10 +3,6 @@
   pointer-events: none;
 }
 
-.animation {
-  /* height: inherit; */
-}
-
 .loadingText {
   position: absolute;
   top: 95%;
