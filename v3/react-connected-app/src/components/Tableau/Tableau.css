@@ -7,3 +7,12 @@
   background-color: #282820;
   box-shadow: 10px 10px 50px 30px rgb(97 218 251 / 15%), -10px -10px 50px 30px rgb(97 218 251 / 3%);
 }
+
+.animationDiv {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+

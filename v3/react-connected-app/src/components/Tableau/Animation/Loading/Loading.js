@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Loading(props) {
+function Loading() {
   const [loadCount, setLoadCount] = useState(0);
   const [loadText, setLoadText] = useState('Loading');
 
@@ -18,11 +18,9 @@ function Loading(props) {
   const handleLoadCount = () => {
     if (loadCount < 3) {
       setLoadCount(loadCount + 1);
-      console.count('loadCount < 3');
     }
     else if (loadCount === 3) {
       setLoadCount(0);
-      console.count('loadCount === 3');
     }
   }
 
