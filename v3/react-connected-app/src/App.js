@@ -15,6 +15,7 @@ function App() {
             height={750}
             width={1400}
             toolbar="bottom"
+            hideTabs={true}
           />
           <p>
             Edit <code>src/App.js</code> to embed your viz and save to reload.

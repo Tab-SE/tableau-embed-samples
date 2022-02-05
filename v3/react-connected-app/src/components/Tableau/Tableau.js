@@ -16,25 +16,32 @@ function Tableau(props) {
     width: props.width,
   };  
 
+  // CSS is passed to react-spring to that transitions behave gradually via spring based animation
+  // Accessibly hiding elements as described here: https://css-tricks.com/comparing-various-ways-to-hide-things-in-css/
   const animationTransition = useSpring({
-    clip: interactive ? 'rect(0 0 0 0)' : 'rect(1 1 1 1)', 
-    clipPath: interactive ? 'inset(50%)' : 'inset(0%)',
-    position: interactive ? 'absolute' : 'static',
-    height: interactive ? 1 : articleStyle.height,
-    width: interactive ? 1 : articleStyle.width,
-    overflow: interactive ? 'hidden' : 'visible',
-    whiteSpace: interactive ? 'nowrap' : 'normal',
+    clip: interactive ? 'rect(0 0 0 0)' : 'rect(1 1 1 1)', // cuts the element so it disappears
+    clipPath: interactive ? 'circle(0%)' : 'circle(100%)', // replaces clip on modern browsers
+    position: interactive ? 'absolute' : 'static', // remove the element from document flow
+    height: interactive ? 1 : articleStyle.height, // shortest possible height still accessible to screen readers
+    width: interactive ? 1 : articleStyle.width, // shortest possible width still accessible to screen readers
+    overflow: interactive ? 'hidden' : 'visible', // avoids element overflowing
+    whiteSpace: interactive ? 'nowrap' : 'normal', // avoids removing empty spaces on screen readers
+    opacity: interactive ? 0 : 1, // degree to which content behind an element is hidden
+    delay: 500 // short delay to display "Done." as load text before transitioning
   });
 
+  // Accessibly hiding elements is also necessary for the viz to load in the background
   const vizTransition = useSpring({ 
-    clip: !interactive ? 'rect(0 0 0 0)' : 'rect(1 1 1 1)', 
-    clipPath: !interactive ? 'inset(50%)' : 'inset(0%)',
-    position: !interactive ? 'absolute' : 'static',
-    height: !interactive ? 1 : articleStyle.height,
-    width: !interactive ? 1 : articleStyle.width,
-    overflow: !interactive ? 'hidden' : 'visible',
-    whiteSpace: !interactive ? 'nowrap' : 'normal',
-    config: { duration: 750 }
+    clip: !interactive ? 'rect(0 0 0 0)' : 'rect(1 1 1 1)', // cuts the element so it disappears
+    clipPath: !interactive ? 'circle(0%)' : 'circle(100%)', // replaces clip on modern browsers
+    position: !interactive ? 'absolute' : 'static', // remove the element from document flow
+    height: !interactive ? 1 : articleStyle.height, // shortest possible height still accessible to screen readers
+    width: !interactive ? 1 : articleStyle.width, // shortest possible width still accessible to screen readers
+    overflow: !interactive ? 'hidden' : 'visible', // avoids element overflowing
+    whiteSpace: !interactive ? 'nowrap' : 'normal', // avoids removing empty spaces on screen readers
+    opacity: !interactive ? 0 : 1, // degree to which content behind an element is hidden
+    config: { duration: 750 }, // makes the transition smoother
+    delay: 500 // short delay to display "Done." as load text before transitioning
   });
 
   return (
@@ -44,7 +51,9 @@ function Tableau(props) {
       </Helmet>
       <article className='vizArticle' style={articleStyle}>
         <animated.div style={animationTransition} className='animationDiv'>
-          <Animation/>
+          <Animation
+            interactive={interactive}
+          />
         </animated.div>
         <animated.div style={vizTransition}>
           <Viz

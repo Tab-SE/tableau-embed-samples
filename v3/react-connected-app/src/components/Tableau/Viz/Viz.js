@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import './Viz.css'
 
 // loads tableau visualizations and initiates the Embedding v3 API https://help.tableau.com/current/api/embedding_api/en-us/index.html
 function Viz(props) {

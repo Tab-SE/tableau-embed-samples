@@ -4,8 +4,8 @@ import './Animation.css';
 import logo from '../../../assets/images/logo.svg';
 
 // isolates state and behavior of viz load animations
-function Animation() {
-  // react-spring animation prop
+function Animation(props) {
+  // CSS is passed to react-spring to that transitions behave gradually via spring based animation
   const animateProps = useSpring({
     from: { opacity: 0.01, rotate: -360, scale: 0.33 }, 
     to: { opacity: 1, rotate: 0, scale: 1 }, 
@@ -23,7 +23,9 @@ function Animation() {
           alt="logo"
         />
       </animated.div>
-      <Loading/>
+      <Loading
+        interactive={props.interactive}
+      />
     </>
   )
 }

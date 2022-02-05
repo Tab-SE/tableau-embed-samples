@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Loading() {
+function Loading(props) {
   const [loadCount, setLoadCount] = useState(0);
   const [loadText, setLoadText] = useState('Loading');
 
@@ -12,8 +12,17 @@ function Loading() {
   }, [loadText]);
 
   useEffect(() => {
-    setLoadText('Loading' + '.'.repeat(loadCount));
-  }, [loadCount]);
+    if (!props.interactive) {
+      setLoadText('Loading' + '.'.repeat(loadCount) + ' '.repeat(3 - loadCount));
+    }
+  }, [loadCount, props.interactive]);
+
+  useEffect(() => {
+    if (props.interactive) {
+      setLoadText('Done.');
+      setLoadCount(0);
+    }
+  }, [props.interactive])
 
   const handleLoadCount = () => {
     if (loadCount < 3) {
@@ -25,7 +34,7 @@ function Loading() {
   }
 
   return (
-    <code className='loadingText'>{loadText}</code>
+    <code className='loadingText'><pre>{loadText}</pre></code>
   )
 }
 
