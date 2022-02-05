@@ -50,13 +50,13 @@ function Tableau(props) {
         <script type="module" src="https://embedding.tableauusercontent.com/tableau.embedding.3.0.0.min.js" async></script>
       </Helmet>
       <article className='vizArticle' style={articleStyle}>
-        <animated.div style={animationTransition} className='animationDiv'>
+        <animated.div style={animationTransition} className='loadingTransition'>
           <Animation
             interactive={interactive}
             articleStyle={articleStyle}
           />
         </animated.div>
-        <animated.div style={vizTransition}>
+        <animated.div style={vizTransition} className='vizTransition'>
           <Viz
             vizObj={vizObj}
             setVizObj={setVizObj}

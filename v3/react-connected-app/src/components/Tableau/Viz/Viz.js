@@ -12,12 +12,12 @@ function Viz(props) {
   useEffect(() => {
     if (props.vizObj) { // if state has an initialized Tableau viz
       props.vizObj.addEventListener('firstinteractive', async (event) => { // add the custom event listener to <tableau-viz>
-        //props.setInteractive(true); // update state to indicate that the Tableau viz is interactive
+        props.setInteractive(true); // update state to indicate that the Tableau viz is interactive
       });
 
       // return function removes listener on unmount to avoid memory leaks
       return () => props.vizObj.removeEventListener('firstinteractive', async (event) => {
-        //props.setInteractive(true);
+        props.setInteractive(true);
       });
     }
   }, [props.vizObj]); // runs when props.vizObj state is set
