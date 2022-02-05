@@ -41,7 +41,7 @@ function Tableau(props) {
     whiteSpace: !interactive ? 'nowrap' : 'normal', // avoids removing empty spaces on screen readers
     opacity: !interactive ? 0 : 1, // degree to which content behind an element is hidden
     config: { duration: 750 }, // makes the transition smoother
-    delay: 500 // short delay to display "Done." as load text before transitioning
+    delay: 750 // short delay to display "Done." as load text before transitioning
   });
 
   return (
@@ -53,6 +53,7 @@ function Tableau(props) {
         <animated.div style={animationTransition} className='animationDiv'>
           <Animation
             interactive={interactive}
+            articleStyle={articleStyle}
           />
         </animated.div>
         <animated.div style={vizTransition}>

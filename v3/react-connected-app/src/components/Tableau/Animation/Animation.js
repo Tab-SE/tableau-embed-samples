@@ -14,9 +14,16 @@ function Animation(props) {
     reset: true
   });
 
+  // spreading animateProps inside a single styles object
+  const animateStyles = {
+    height: props.articleStyle.height,
+    width: props.articleStyle.width,
+    ...animateProps
+  };
+
   return (
     <>
-      <animated.div style={animateProps}>
+      <animated.div style={animateStyles} className='loadingDiv'>
         <img 
           src={logo} 
           className={`App-logo`} 

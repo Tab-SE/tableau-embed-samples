@@ -1,6 +1,14 @@
 .App-logo {
-  height: 60vmin;
   pointer-events: none;
+  height: 70%;
+}
+
+.loadingDiv {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .loadingText {
