@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Loading(props) {
+function Loading() {
   const [loadCount, setLoadCount] = useState(0);
   const [loadText, setLoadText] = useState('Loading');
 

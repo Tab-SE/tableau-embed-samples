@@ -25,7 +25,7 @@ function Viz(props) {
 
   return (
     <div 
-      className={`VizDiv ${props.interactive ? 'active' : 'inactive'}`}
+      className='VizDiv'
       style={props.articleStyle}
     >
       <tableau-viz 
