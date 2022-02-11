@@ -16,7 +16,7 @@ function Tableau(props) {
     width: props.width,
   };  
 
-  // CSS is passed to react-spring to that transitions behave gradually via spring based animation
+  // CSS is passed to react-spring so that transitions behave gradually via spring based animation
   // Accessibly hiding elements is necessary for viz loading https://css-tricks.com/comparing-various-ways-to-hide-things-in-css/
   const vizTransition = useSpring({ 
     clip: !interactive ? 'rect(0 0 0 0)' : 'rect(1 1 1 1)', // cuts the element so it disappears
@@ -56,6 +56,11 @@ function Tableau(props) {
             hideTabs={props.hideTabs}
             device={props.device}
             toolbar={props.toolbar}
+            layouts={{
+              desktop: { height: 750, width: 1400},
+              tablet: {},
+              phone: {}
+            }}
           />
         </animated.div>
       </article>
