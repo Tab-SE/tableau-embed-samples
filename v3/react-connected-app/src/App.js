@@ -2,7 +2,7 @@
 import Tableau from './components/Tableau/Tableau.js'
 import './App.css';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <main className="Main">
@@ -10,8 +10,16 @@ function App() {
           <h1>Tableau Connected App: <strong>React</strong></h1>
         </header>
         <section>
-          <Tableau
+          {/* <Tableau
             vizUrl="https://public.tableau.com/views/QuarterlyCashflow/QUARTERLYCASHFLOW?:display_count=n&:showVizHome=no&embed=yes"
+            height={750}
+            width={1400}
+            toolbar="bottom"
+            hideTabs={true}
+          /> */}
+          <Tableau
+            env_vars={props.env_vars}
+            vizUrl="https://prod-ca-a.online.tableau.com/views/tiqsubs/Dashboard1"
             height={750}
             width={1400}
             toolbar="bottom"

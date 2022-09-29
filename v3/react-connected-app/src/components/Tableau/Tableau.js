@@ -45,6 +45,7 @@ function Tableau(props) {
         />
         <animated.div style={vizTransition} className='vizTransition'>
           <Viz
+            env_vars={props.env_vars}
             vizObj={vizObj}
             setVizObj={setVizObj}
             interactive={interactive}

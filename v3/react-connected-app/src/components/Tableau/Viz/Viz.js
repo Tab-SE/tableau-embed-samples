@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { encode } from '../../../libs/connected_apps'
 
 // loads tableau visualizations and initiates the Embedding v3 API https://help.tableau.com/current/api/embedding_api/en-us/index.html
 function Viz(props) {
@@ -31,6 +32,8 @@ function Viz(props) {
     }
   }, [props.interactive])
 
+  const jwt = encode(props.env_vars);
+
   return (
     <div 
       className='VizDiv'
@@ -47,6 +50,7 @@ function Viz(props) {
         width={props.width}
         device={props.device}
         hide-tabs={props.hideTabs ? true : false}
+        token={jwt}
       />
     </div>
   );

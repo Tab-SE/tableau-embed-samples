@@ -4,9 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// request environment variables once and pass the object as a prop
+const env_vars = process.env
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App 
+      env_vars={env_vars}
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );
