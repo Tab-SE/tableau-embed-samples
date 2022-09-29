@@ -6,13 +6,13 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "jsrsasign": "^10.5.27",
-    "jsrsasign-util": "^1.0.5",
+    "jose": "^4.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-scripts": "5.0.0",
     "react-spring": "^9.4.2",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
