@@ -46,6 +46,33 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+</br>
+
+# Environment Variables
+
+This project uses environment variables to provide users with a way to set secrets and passwords without pushing this information to git. Please note that it is not secure to use environment variables in frontend builds as described in the documentation for `create-react-app`: 
+
+https://create-react-app.dev/docs/adding-custom-environment-variables/.
+
+>WARNING: Do not store any secrets (such as private API keys) in your React app!
+>
+>Environment variables are embedded into the build, meaning anyone can view them by inspecting your app's files.
+
+
+The backend of your application is an acceptable location to store secrets as environment variables. On the other hand you can deploy a microservice that can authenticate users to Tableau's REST API and respond with a temporary API key allowing you to make requests from the browser. That way passwords, PATs and Connected App secrets can be secured. 
+
+Your `.env` file should include the following:
+
+```bash
+REACT_APP_TABLEAU_DOMAIN='tableau domain'
+REACT_APP_TABLEAU_SITENAME='tableau site name'
+REACT_APP_TABLEAU_RESTAPI_VERSION='api version'
+REACT_APP_TABLEAU_USERNAME='username (or email for Tableau Cloud users)'
+REACT_APP_TABLEAU_CA_CLIENT='obtained during connected app configuration'
+REACT_APP_TABLEAU_CA_SECRET_ID='obtained during connected app configuration'
+REACT_APP_TABLEAU_CA_SECRET_VALUE='obtained during connected app configuration'
+```
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
