@@ -11,7 +11,7 @@ function App() {
         </header>
         <section>
           <Tableau
-            vizUrl="https://public.tableau.com/views/QuarterlyCashflow/QUARTERLYCASHFLOW?:display_count=n&:showVizHome=no&embed=yes"
+            vizUrl="https://10ay.online.tableau.com/t/embeddedanalytics/views/QuarterlyCashflow/QUARTERLYCASHFLOW"
             height={750}
             width={1400}
             toolbar="bottom"

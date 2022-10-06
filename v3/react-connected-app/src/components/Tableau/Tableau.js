@@ -40,7 +40,7 @@ function Tableau(props) {
   return (
     <>
       <Helmet> 
-        <script type="module" src="https://embedding.tableauusercontent.com/tableau.embedding.3.0.0.min.js" async></script>
+        <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" async></script>
       </Helmet>
       <article className='vizArticle' style={articleStyle}>
         <animated.div style={animationTransition} className='animationDiv'>
