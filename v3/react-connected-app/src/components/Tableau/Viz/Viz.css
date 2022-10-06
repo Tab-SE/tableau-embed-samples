@@ -8,11 +8,3 @@
   overflow: hidden; /* avoids element overflowing */
   white-space: nowrap; /* avoids removing empty spaces on screen readers */
 }
-
-.Viz {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background-color:#282c34; */
-  background-color: #4E4F50;
-}

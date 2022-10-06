@@ -1,0 +1,15 @@
+.App-logo {
+  height: 60vmin;
+  pointer-events: none;
+}
+
+.animation {
+  /* height: inherit; */
+}
+
+.loadingText {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
