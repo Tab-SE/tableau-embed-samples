@@ -6,7 +6,7 @@ function Viz(props) {
   
   const vizRef = useRef(null); // useRef accesses DOM nodes created with the render method https://reactjs.org/docs/refs-and-the-dom.html
   const [loaded, setLoaded] = useState(false);
-  const [jwt, setJWT] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6IjZjYzYwMDY5LTU3ZGEtNGYwMC1hYjVlLTdkODFkMTljM2FhMCIsImtpZCI6ImI0ZDAzZWY5LTNjNjAtNGRjMC1hZjZmLWE0M2I1M2ViNTgyNiJ9.eyJzdWIiOiJzLnByaWNlQHNhbGVzZm9yY2UuY29tIiwiYXVkIjoidGFibGVhdSIsIm5iZiI6MTY2NTA4Mjg4OCwianRpIjoiMTY2NTA4Mjk4ODA2NCIsImlzcyI6IjZjYzYwMDY5LTU3ZGEtNGYwMC1hYjVlLTdkODFkMTljM2FhMCIsInNjcCI6WyJ0YWJsZWF1OnZpZXdzOmVtYmVkIl0sImV4cCI6MTY2NTA4MzA4OH0.LtRgfFJ7MLPvopaYRkJY0B3NPqzKEDgnDthou58Mbz4');
+  const [jwt, setJWT] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlzcyI6IjZjYzYwMDY5LTU3ZGEtNGYwMC1hYjVlLTdkODFkMTljM2FhMCIsImtpZCI6ImI0ZDAzZWY5LTNjNjAtNGRjMC1hZjZmLWE0M2I1M2ViNTgyNiJ9.eyJzdWIiOiJzLnByaWNlQHNhbGVzZm9yY2UuY29tIiwiYXVkIjoidGFibGVhdSIsIm5iZiI6MTY2NTA4OTAxMSwianRpIjoiMTY2NTA4OTExMTAwMiIsImlzcyI6IjZjYzYwMDY5LTU3ZGEtNGYwMC1hYjVlLTdkODFkMTljM2FhMCIsInNjcCI6WyJ0YWJsZWF1OnZpZXdzOmVtYmVkIl0sImV4cCI6MTY2NTA4OTIxMX0.NOrT9i83WoCLAbxh-c0BAWPQpOrYH_coppV7V4Pw6ek');
 
   useEffect(() => {
     setLoaded(true);
